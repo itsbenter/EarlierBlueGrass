@@ -1,0 +1,15 @@
+{
+   "$schema": "https://smapi.io/schemas/manifest.json",
+   "Name": "Earlier Blue Grass",
+   "Author": "ItsBenter",
+   "Version": "1.0.1",
+   "Description": "Adds different ways to obtain Blue Grass earlier in non-Meadowlands farm.",
+   "UniqueID": "ItsBenter.EarlierBlueGrass.CP",
+   "MinimumApiVersion": "4.0.0",
+   "UpdateKeys": [
+      "Nexus:21135"
+   ],
+   "ContentPackFor": {
+      "UniqueID": "Pathoschild.ContentPatcher"
+   }
+}

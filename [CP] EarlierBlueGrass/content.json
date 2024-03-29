@@ -1,0 +1,123 @@
+{
+  "$schema": "https://smapi.io/schemas/content-patcher.json",
+  "Format": "2.0.0",
+  "ConfigSchema": {
+    //Traveling Cart
+    "TravelingCart": {
+      "Default": "false",
+      "AllowValues": "true, false",
+      "Section": "TravelingCart"
+    },
+    "TravelingCart_MinimumYear": {
+      "Default": "2",
+      "Section": "TravelingCart"
+    },
+    "TravelingCart_ChanceInStock": {
+      "Default": "0.02",
+      "Section": "TravelingCart"
+    },
+    "TravelingCart_Price": {
+      "Default": "3000",
+      "Section": "TravelingCart"
+    },
+    //Stardew Valley Fair
+    "StardewValleyFair": {
+      "Default": "false",
+      "AllowValues": "true, false",
+      "Section": "StardewValleyFair"
+    },
+    "StardewValleyFair_MinimumYear": {
+      "Default": "1",
+      "Section": "StardewValleyFair"
+    },
+    "StardewValleyFair_Price": {
+      "Default": "2000",
+      "Section": "StardewValleyFair"
+    },
+    //Gift from Marnie
+    "GiftFromMarnie": {
+      "Default": "false",
+      "AllowValues": "true, false",
+      "Section": "GiftFromMarnie"
+    },
+    "GiftFromMarnie_MinimumYear": {
+      "Default": "1",
+      "Section": "GiftFromMarnie"
+    },
+    "GiftFromMarnie_FarmingLevel": {
+      "Default": "8",
+      "Section": "GiftFromMarnie"
+    },
+    "GiftFromMarnie_MarnieHeart": {
+      "Default": "4",
+      "Section": "GiftFromMarnie"
+    },
+    "GiftFromMarnie_BlueGrassStarterAmount": {
+      "Default": "5",
+      "Section": "GiftFromMarnie"
+    }
+  },
+  "Changes": [
+    {
+      "LogName": "Traveling Cart",
+      "Action": "EditData",
+      "Target": "Data/Shops",
+      "TargetField": [
+        "Traveler",
+        "Items"
+      ],
+      "Entries": {
+        "ItsBenter.EarlierBlueGrass.BlueGrassStarter": {
+          "Id": "ItsBenter.EarlierBlueGrass.BlueGrassStarter",
+          "Condition": "{{TravelingCart}}, RANDOM {{TravelingCart_ChanceInStock}}, YEAR {{TravelingCart_MinimumYear}}",
+          "ItemId": "BlueGrassStarter",
+          "AvailableStock": "{{Random:1, 2, 3, 4, 5}}",
+          "Price": "{{TravelingCart_Price}}"
+        }
+      }
+    },
+    {
+      "LogName": "Stardew Valley Fair",
+      "Action": "EditData",
+      "Target": "Data/Shops",
+      "TargetField": [
+        "Festival_StardewValleyFair_StarTokens",
+        "Items"
+      ],
+      "Entries": {
+        "ItsBenter.EarlierBlueGrass.BlueGrassStarter": {
+          "Id": "ItsBenter.EarlierBlueGrass.BlueGrassStarter",
+          "Condition": "{{StardewValleyFair}}, YEAR {{StardewValleyFair_MinimumYear}}",
+          "ItemId": "BlueGrassStarter",
+          "MinStack": 10,
+          "AvailableStock": 1,
+          "Price": "{{StardewValleyFair_Price}}"
+        }
+      }
+    },
+    {
+      "LogName": "Marnie Gift Mail",
+      "Action": "EditData",
+      "Target": "Data/Mail",
+      "Entries": {
+        "ItsBenter.EarlierBlueGrass.MarnieGift": "{{i18n:ItsBenter.EarlierBlueGrass.MarnieGift.LetterContent}}%item id (O)BlueGrassStarter {{GiftFromMarnie_BlueGrassStarterAmount}} %%[#]{{i18n:ItsBenter.EarlierBlueGrass.MarnieGift.LetterName}}"
+      }
+    },
+    {
+      "LogName": "Send Marnie Mail",
+      "Action": "EditData",
+      "Target": "Data/TriggerActions",
+      "Entries": {
+        "ItsBenter.EarlierBlueGrass.MarnieGift": {
+          "Id": "ItsBenter.EarlierBlueGrass.MarnieGift",
+          "Trigger": "DayEnding",
+          "Condition": "{{GiftFromMarnie}}, YEAR {{GiftFromMarnie_MinimumYear}}, PLAYER_FARMING_LEVEL Current {{GiftFromMarnie_FarmingLevel}}, PLAYER_HEARTS Current Marnie {{GiftFromMarnie_MarnieHeart}}",
+          "HostOnly": false,
+          "Actions": [
+            "AddMail Current ItsBenter.EarlierBlueGrass.MarnieGift"
+          ]
+        }
+      }
+    }
+  ]
+}

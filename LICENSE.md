@@ -1,0 +1,1 @@
+Patch to apply the edit is licensed under the [MIT license](https://mit-license.org/).

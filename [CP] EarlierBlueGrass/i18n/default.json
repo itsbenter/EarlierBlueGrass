@@ -1,0 +1,28 @@
+{
+  "$schema": "https://smapi.io/schemas/i18n.json",
+
+  "config.section.TravelingCart.name": "Traveling Cart",
+  "config.TravelingCart.name": "Enable",
+  "config.TravelingCart_MinimumYear.name": "Minimum Year",
+  "config.TravelingCart_ChanceInStock.name": "Chance in Stock",
+  "config.TravelingCart_ChanceInStock.description": "Percentage (in decimal) of how often the Blue Grass is in stock. Set to 1 for 100% chance.",
+  "config.TravelingCart_Price.name": "Price",
+  "config.TravelingCart_Price.description": "Price for 1 Blue Grass Starter",
+
+  "config.section.StardewValleyFair.name": "Stardew Valley Fair",
+  "config.StardewValleyFair.name": "Enable",
+  "config.StardewValleyFair_MinimumYear.name": "Minimum Year",
+  "config.StardewValleyFair_Price.name": "Star Tokens Price",
+  "config.StardewValleyFair_Price.description": "Price for 10 Blue Grass Starter",
+
+  "config.section.GiftFromMarnie.name": "Gift from Marnie",
+  "config.GiftFromMarnie.name": "Enable",
+  "config.GiftFromMarnie_MinimumYear.name": "Minimum Year",
+  "config.GiftFromMarnie_MarnieHeart.name": "Marnie Hearts",
+  "config.GiftFromMarnie_FarmingLevel.name": "Farming Level",
+  "config.GiftFromMarnie_BlueGrassStarterAmount.name": "Blue Grass Starter Amount",
+
+  "ItsBenter.EarlierBlueGrass.MarnieGift.LetterName": "Special Grass from Marnie",
+  "ItsBenter.EarlierBlueGrass.MarnieGift.LetterContent": "Dear @,^I've been told of how you've ramped up your animal produce. Here is a very special grass that all farm animals love to munch on. Be careful where you place it so that the grass can spread well. ^Take care!  ^   -Marnie",
+
+}
